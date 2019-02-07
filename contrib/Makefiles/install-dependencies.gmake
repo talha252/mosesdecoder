@@ -70,7 +70,7 @@ $(call safepath,${XMLRPC_PREFIX}/bin/xmlrpc-c-config):
 	rm -rf ${TMP}
 
 # CMPH for CompactPT
-cmph: URL=$(sourceforge)/cmph-2.0.2.tar.gz
+cmph: URL=$(sourceforge)/cmph/v2.0.2/cmph-2.0.2.tar.gz
 cmph: TMP=$(CWD)/build/cmph
 cmph: override PREFIX=${CMPH_PREFIX}
 cmph: | $(call safepath,${CMPH_PREFIX}/bin/cmph)
