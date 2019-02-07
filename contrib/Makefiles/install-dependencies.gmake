@@ -35,8 +35,8 @@ IRSTLM_PREFIX ?= ${PREFIX}/irstlm-5.80.08
 BOOST_PREFIX  ?= ${PREFIX}
 
 # currently, the full enchilada means xmlrpc-c, cmph, irstlm, boost
-# xmlrpc & cmph is out
-all: boost
+# xmlrpc is out
+all: cmph boost
 
 # we use bash and fail when pipelines fail
 SHELL = /bin/bash -e -o pipefail
@@ -70,13 +70,13 @@ $(call safepath,${XMLRPC_PREFIX}/bin/xmlrpc-c-config):
 	rm -rf ${TMP}
 
 # CMPH for CompactPT
-cmph: URL=$(sourceforge)/cmph/cmph/cmph-2.0.tar.gz
+cmph: URL=$(sourceforge)/cmph-2.0.2.tar.gz
 cmph: TMP=$(CWD)/build/cmph
 cmph: override PREFIX=${CMPH_PREFIX}
 cmph: | $(call safepath,${CMPH_PREFIX}/bin/cmph)
 $(call safepath,${CMPH_PREFIX}/bin/cmph):
 	$(sfget)
-	$(call configure-make-install,${TMP}/cmph-2.0)
+	$(call configure-make-install,${TMP}/cmph-2.0.2)
 	rm -rf ${TMP}
 
 # irstlm for irstlm
